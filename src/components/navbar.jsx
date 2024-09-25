@@ -5,7 +5,7 @@ import closeIcon from "../assets/menu-close.png"
 import burguerIcon from "../assets/menu-icon.png"
 import wpIcon from "../assets/wp-icon.png"
 import igIcon from "../assets/ig-icon.png"
-import emailIcon from "../assets/email-Icon.png"
+import emailIcon from "../assets/email-icon.png"
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
