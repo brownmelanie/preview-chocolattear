@@ -8,7 +8,8 @@ export default {
     extend: {
       fontFamily: {
         custom: ['VCRMono', 'sans-serif'],
-        jost: ['Jost', 'sans-serif']
+        jost: ['Jost', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif']
       }
     },
   },

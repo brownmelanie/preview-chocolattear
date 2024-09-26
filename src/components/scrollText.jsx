@@ -1,6 +1,6 @@
 const ScrollText = () => {
   return (
-    <div className="overflow-hidden whitespace-nowrap pt-20 max-h-screen">
+    <div className="overflow-hidden whitespace-nowrap pt-2 max-h-screen">
     <div className="inline-block text-[#252525]">
       <p className="font-jost font-bold text-5xl">
         OCÖLATTEARCHOCÖLATTEARCHOCÖLATTEARCHOCÖLATTEARCH
