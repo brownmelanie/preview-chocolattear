@@ -2,6 +2,7 @@ import videoSrc from "../assets/video-demo.mp4";
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../components/loader.jsx';
+import useWindowHeight from '..//components/calWindowHeight.jsx'
 
 const VideoIntro = () => {
   const videoRef = useRef(null);
@@ -9,9 +10,9 @@ const VideoIntro = () => {
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
   const [isLoading, setIsLoading] = useState(false); // Estado para mostrar el loader
+  const windowHeight = useWindowHeight(); // Utiliza el hook para obtener la altura
   const navigate = useNavigate();
 
-  // Actualizar la fecha y hora
   const updateDateTime = () => {
     const now = new Date();
     const formattedDate = now.toLocaleDateString('en-US', {
@@ -40,21 +41,28 @@ const VideoIntro = () => {
     setIsPlaying(false);
   };
 
-  // Lógica para mostrar el loader y luego redirigir
   const handleRedirect = () => {
-    setIsLoading(true); // Mostrar el loader
+    setIsLoading(true);
     setTimeout(() => {
-      navigate('/home'); // Navegar a la pantalla "home.jsx" después de un pequeño delay
-    }, 2000); // 2 segundos de pantalla de carga
+      navigate('/home');
+    }, 2000);
   };
 
   return (
     <div className="relative">
-      {isLoading ? ( // Mostrar el loader si isLoading es true
+      {isLoading ? (
         <Loader />
       ) : (
         <>
-          <video ref={videoRef} className="object-cover h-screen" autoPlay loop muted playsInline>
+          <video
+            ref={videoRef}
+            className="object-cover"
+            style={{ height: `${windowHeight}px`, width: '100%' }} // Aplica la altura obtenida
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
             <source src={videoSrc} type="video/mp4" />
           </video>
 
@@ -98,3 +106,4 @@ const VideoIntro = () => {
 };
 
 export default VideoIntro;
+

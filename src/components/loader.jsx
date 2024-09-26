@@ -1,8 +1,14 @@
 import loaderImage from '../assets/icon-logo.png';
+import useWindowHeight from '../components/calWindowHeight';
 
 const Loader = () => {
+  const windowHeight = useWindowHeight();
+
   return (
-    <div className="flex items-center justify-center w-full h-screen bg-white">
+    <div
+      className="flex items-center justify-center bg-white"
+      style={{ height: `${windowHeight}px`, width: '100%' }}
+    >
       <img
         src={loaderImage}
         alt="Loading"
