@@ -9,8 +9,8 @@ const VideoIntro = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
-  const [isLoading, setIsLoading] = useState(false); // Estado para mostrar el loader
-  const windowHeight = useWindowHeight(); // Utiliza el hook para obtener la altura
+  const [isLoading, setIsLoading] = useState(false);
+  const windowHeight = useWindowHeight();
   const navigate = useNavigate();
 
   const updateDateTime = () => {
@@ -57,7 +57,7 @@ const VideoIntro = () => {
           <video
             ref={videoRef}
             className="object-cover"
-            style={{ height: `${windowHeight}px`, width: '100%' }} // Aplica la altura obtenida
+            style={{ height: `${windowHeight}px`, width: '100%' }}
             autoPlay
             loop
             muted
@@ -65,38 +65,39 @@ const VideoIntro = () => {
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
+          <div className="flex justify-center lg:justify-start lg:ml-5 xl:ml-8">
+            <div className="mt-[-155px] grid grid-rows-4 grid-cols-2 border border-black bg-white w-72 h-32 z-50">
+              <p
+                className="col-span-2 flex items-center justify-center font-custom text-sm border-solid border-black border-b cursor-pointer xl:text-lg"
+                onClick={handleRedirect}
+              >
+                CHOCOLATTEAR.MP4
+              </p>
+              <p className="col-span-2 flex items-center justify-center font-custom text-sm border-solid border-black border-b xl:text-lg">
+                Photography & Direction
+              </p>
 
-          <div className="absolute bottom-5 left-5 grid grid-rows-4 grid-cols-2 border border-black bg-white w-52 h-24">
-            <p
-              className="col-span-2 flex items-center justify-center font-custom text-sm border-solid border-black border-b cursor-pointer"
-              onClick={handleRedirect}
-            >
-              CHOCOLATTEAR.MP4
-            </p>
-            <p className="col-span-2 flex items-center justify-center font-custom text-sm border-solid border-black border-b">
-              Photography & Direction
-            </p>
+              <button
+                onClick={handleStop}
+                className={`font-custom border-solid border-black border-b border-e text-sm xl:text-lg ${!isPlaying ? 'opacity-50' : ''}`}
+                disabled={!isPlaying}
+              >
+                Stop
+              </button>
+              <div className="flex items-center justify-center font-custom text-sm border-solid border-black border-b xl:text-lg">
+                {date}
+              </div>
 
-            <button
-              onClick={handleStop}
-              className={`font-custom border-solid border-black border-b border-e text-sm ${!isPlaying ? 'opacity-50' : ''}`}
-              disabled={!isPlaying}
-            >
-              Stop
-            </button>
-            <div className="flex items-center justify-center font-custom text-sm border-solid border-black border-b">
-              {date}
-            </div>
-
-            <button
-              onClick={handlePlay}
-              className={`font-custom border-solid border-black border-e text-sm ${isPlaying ? 'opacity-50' : ''}`}
-              disabled={isPlaying}
-            >
-              Play
-            </button>
-            <div className="flex items-center justify-center font-custom text-sm">
-              {time}
+              <button
+                onClick={handlePlay}
+                className={`font-custom border-solid border-black border-e text-sm xl:text-lg ${isPlaying ? 'opacity-50' : ''}`}
+                disabled={isPlaying}
+              >
+                Play
+              </button>
+              <div className="flex items-center justify-center font-custom text-sm xl:text-lg">
+                {time}
+              </div>
             </div>
           </div>
         </>

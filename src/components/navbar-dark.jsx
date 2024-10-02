@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import homeIcon from '../assets/icon-logo.png'
 import closeIcon from "../assets/menu-close-dark.png"
@@ -9,6 +9,11 @@ import igIcon from "../assets/ig-icon-dark.png"
 import emailIcon from "../assets/email-icon-dark.png"
 
 const NavbarDark = () => {
+
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -22,7 +27,7 @@ const NavbarDark = () => {
 
   return (
     <div>
-      <div className='bg-[#252525] flex justify-between items-center px-4 h-16'>
+      <div className='bg-[#252525] flex justify-between items-center px-4 h-16 lg:px-8 lg:pt-5'>
         <button
           onClick={() => handleNavigation('/home')}
           className="bg-white rounded-full py-2 px-4"
@@ -32,7 +37,7 @@ const NavbarDark = () => {
 
         <button
           onClick={toggleMenu}
-          className= {`z-40 bg-transparent rounded-full border-solid border-2 w-16 h-9 flex items-center justify-center ${isMenuOpen ? 'border-[#252525]' : 'border-white'}`}
+          className= {`lg:hidden z-40 bg-transparent rounded-full border-solid border-2 w-16 h-9 flex items-center justify-center ${isMenuOpen ? 'border-[#252525]' : 'border-white'}`}
         >
           <img 
               src={isMenuOpen ? closeIcon : burguerIcon}
@@ -40,6 +45,36 @@ const NavbarDark = () => {
               className={`h-6 w-6 transition-all duration-300 ease-in-out ${isMenuOpen ? 'p-1' : ''}` }
           />
         </button>
+
+        <div className='hidden lg:block lg:w-[550px] lg:border-2 lg:border-solid lg:border-white lg:rounded-full lg:font-custom lg:text-white'>
+          <ul className='lg:flex lg:flex-row lg:justify-around lg:items-center'>
+            <li 
+              onClick={() => handleNavigation('/home')}
+              className={`${isActive('/home') ? 'bg-white text-[#252525] py-[4px] rounded-3xl w-[100px] text-center ml-[-22px] lg:border-2 lg:border-solid lg:border-white cursor-pointer' : ''} `}>
+                HOME
+            </li>
+            <li 
+              onClick={() => handleNavigation('/photos')}
+              className={`${isActive('/photos') ? 'bg-white text-[#252525] py-[4px] rounded-3xl px-5 text-center lg:border-2 lg:border-solid lg:border-white' : ''}`} >
+                PHOTOS
+            </li>
+            <li 
+              onClick={() => handleNavigation('/direction')}
+              className={`${isActive('/direction') ? 'bg-white text-[#252525] py-[4px] rounded-3xl px-5 text-center lg:border-2 lg:border-solid lg:border-white' : ''}`}>
+                DIRECTION
+            </li>
+            <li 
+              onClick={() => handleNavigation('/about')}
+              className={`${isActive('/about') ? 'bg-white text-[#252525] py-[4px] rounded-3xl px-5 text-center lg:border-2 lg:border-solid lg:border-white' : ''}`}>
+                ABOUT ME
+            </li>
+            <li 
+              onClick={() => handleNavigation('/merch')}
+              className={`${isActive('/merch') ? 'bg-white tex-[#252525] py-[4px] rounded-3xl px-5 text-center lg:border-2 lg:border-solid lg:border-white mr-[-23px]' : ''}`}>
+                MERCH
+            </li>
+          </ul>
+        </div>
       </div>
       
 
@@ -59,10 +94,6 @@ const NavbarDark = () => {
           </li>
           <li className="cursor-pointer relative group" onClick={() => handleNavigation('/about')}>
             ABOUT ME
-            <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#252525] transition-all duration-300 group-hover:w-full"></span>
-          </li>
-          <li className="cursor-pointer relative group" onClick={() => handleNavigation('/contact')}>
-            CONTACT
             <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#252525] transition-all duration-300 group-hover:w-full"></span>
           </li>
           <li className="cursor-pointer relative group" onClick={() => handleNavigation('/merch')}>

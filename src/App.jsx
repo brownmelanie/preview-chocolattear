@@ -5,7 +5,6 @@ import Home from './screens/home.jsx';
 import Photos from "./screens/photos.jsx";
 import Direction from "./screens/direction.jsx";
 import About from "./screens/about-me.jsx";
-import Contact from "./screens/contact.jsx";
 import Merch from "./screens/merch.jsx"
 
 const App = () => {
@@ -17,7 +16,6 @@ const App = () => {
         <Route path="/photos" element={<Photos />} />
         <Route path="/direction" element={<Direction />} />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/merch" element={<Merch />} />
       </Routes>
     </Router>
