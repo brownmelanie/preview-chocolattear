@@ -7,6 +7,9 @@ import Direction from "./screens/direction.jsx";
 import About from "./screens/about-me.jsx";
 import Merch from "./screens/merch.jsx"
 
+import Login from './screens/loginFirebase.jsx';
+import ImageUpload from './screens/formFirebase.jsx';
+
 const App = () => {
   return (
     <Router>
@@ -17,6 +20,8 @@ const App = () => {
         <Route path="/direction" element={<Direction />} />
         <Route path="/about" element={<About />} />
         <Route path="/merch" element={<Merch />} />
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/3GzUx6zy' element={<ImageUpload/>}/>
       </Routes>
     </Router>
   );
