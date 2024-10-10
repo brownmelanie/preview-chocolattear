@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 import homeIcon from '../assets/icon-logo-white.png'
 import closeIcon from "../assets/menu-close.png"
@@ -11,7 +11,9 @@ import emailIcon from "../assets/email-icon.png"
 const Navbar = () => {
   const location = useLocation();
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => {
+    return location.pathname === path
+  };
 
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,31 +51,24 @@ const Navbar = () => {
 
         <div className='hidden lg:block lg:w-[550px] lg:border-2 lg:border-solid lg:border-[#252525] lg:rounded-full lg:font-custom lg:text'>
           <ul className='lg:flex lg:flex-row lg:justify-around lg:items-center'>
+            {[
+            { label: 'HOME', route: '/home' },
+            { label: 'PHOTOS', route: '/photos' },
+            { label: 'DIRECTION', route: '/direction' },
+            { label: 'ABOUT ME', route: '/about' },
+            { label: 'MERCH', route: '/merch' }
+            ].map((item, index) => (
             <li 
-              onClick={() => handleNavigation('/home')}
-              className={`${isActive('/home') ? 'bg-[#252525] text-white py-[4px] rounded-3xl w-[100px] text-center ml-[-22px] lg:border-2 lg:border-solid lg:border-[#252525]' : ''} `}>
-                HOME
+              key={index}
+              className={` ${
+                isActive(item.route)
+                  ? 'bg-[#252525] text-white py-[4px] rounded-3xl px-5 text-center lg:border-2 lg:border-solid lg:border-[#252525]'
+                  : 'px-8 mr-[-14px]'
+              }`}
+            >
+              <Link to={item.route}>{item.label}</Link>
             </li>
-            <li 
-              onClick={() => handleNavigation('/photos')}
-              className={`${isActive('/photos') ? 'bg-[#252525] text-white py-[4px] rounded-3xl px-5 text-center lg:border-2 lg:border-solid lg:border-[#252525]' : ''}`} >
-                PHOTOS
-            </li>
-            <li 
-              onClick={() => handleNavigation('/direction')}
-              className={`${isActive('/direction') ? 'bg-[#252525] text-white py-[4px] rounded-3xl px-5 text-center lg:border-2 lg:border-solid lg:border-[#252525]' : ''}`}>
-                DIRECTION
-            </li>
-            <li 
-              onClick={() => handleNavigation('/about')}
-              className={`${isActive('/about-me') ? 'bg-[#252525] text-white py-[4px] rounded-3xl px-5 text-center lg:border-2 lg:border-solid lg:border-[#252525]' : ''}`}>
-                ABOUT ME
-            </li>
-            <li 
-              onClick={() => handleNavigation('/merch')}
-              className={`${isActive('/merch') ? 'bg-[#252525] text-white py-[4px] rounded-3xl px-5 text-center lg:border-2 lg:border-solid lg:border-[#252525] mr-[-23px]' : ''}`}>
-                MERCH
-            </li>
+            ))}
           </ul>
         </div>
 
