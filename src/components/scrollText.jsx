@@ -1,3 +1,5 @@
+import "./blinkText.css"
+
 const ScrollText = () => {
   return (
     <>
@@ -76,6 +78,16 @@ const ScrollText = () => {
             <h2 className="font-bold text-8xl mr-[10px]">TEAR</h2>
           </div>
           
+          <p className="text-gray-800">
+          <span className="blink_me" id="rotate">
+            <span>test1</span>
+            <span>bob</span>
+            <span>next</span>
+            <span>last</span>
+            <span>PABLO</span>
+            <span>ANDRES</span>
+          </span> 
+          </p>
           <p className="text-lg font-light mt-[-55px] ml-32">PHOTOGRAPHY & DIRECTION</p>
         </div> 
       </div>

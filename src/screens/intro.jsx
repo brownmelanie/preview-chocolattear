@@ -49,7 +49,9 @@ const VideoIntro = () => {
   };
 
   return (
-    <div className="relative">
+    <div 
+      className="relative"
+      onClick={handleRedirect}>
       {isLoading ? (
         <Loader />
       ) : (
@@ -69,7 +71,6 @@ const VideoIntro = () => {
             <div className="mt-[-155px] grid grid-rows-4 grid-cols-2 border border-black bg-white w-72 h-32 z-50">
               <p
                 className="col-span-2 flex items-center justify-center font-custom text-sm border-solid border-black border-b cursor-pointer xl:text-lg"
-                onClick={handleRedirect}
               >
                 CHOCOLATTEAR.MP4
               </p>
